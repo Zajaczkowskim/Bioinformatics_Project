@@ -1,0 +1,130 @@
+data_cell
+# Created with OpenMM 8.0, 2024-05-09
+#
+loop_
+_atom_site.group_PDB
+_atom_site.id
+_atom_site.type_symbol
+_atom_site.label_atom_id
+_atom_site.label_alt_id
+_atom_site.label_comp_id
+_atom_site.label_asym_id
+_atom_site.label_entity_id
+_atom_site.label_seq_id
+_atom_site.pdbx_PDB_ins_code
+_atom_site.Cartn_x
+_atom_site.Cartn_y
+_atom_site.Cartn_z
+_atom_site.occupancy
+_atom_site.B_iso_or_equiv
+_atom_site.Cartn_x_esd
+_atom_site.Cartn_y_esd
+_atom_site.Cartn_z_esd
+_atom_site.occupancy_esd
+_atom_site.B_iso_or_equiv_esd
+_atom_site.pdbx_formal_charge
+_atom_site.auth_seq_id
+_atom_site.auth_comp_id
+_atom_site.auth_asym_id
+_atom_site.auth_atom_id
+_atom_site.pdbx_PDB_model_num
+ATOM      1 D   CA   . ALA  A ?     1 .     7.4091    15.9397     5.7755  0.0  0.0  ?  ?  ?  ?  ?  .      1  ALA A   CA     1
+ATOM      2 D   CA   . ALA  A ?     2 .     7.2679    14.9771     5.5441  0.0  0.0  ?  ?  ?  ?  ?  .      2  ALA A   CA     1
+ATOM      3 D   CA   . ALA  A ?     3 .     7.1271    14.0146     5.3124  0.0  0.0  ?  ?  ?  ?  ?  .      3  ALA A   CA     1
+ATOM      4 D   CA   . ALA  A ?     4 .     6.9858    13.0523     5.0801  0.0  0.0  ?  ?  ?  ?  ?  .      4  ALA A   CA     1
+ATOM      5 D   CA   . ALA  A ?     5 .     6.8444    12.0902     4.8470  0.0  0.0  ?  ?  ?  ?  ?  .      5  ALA A   CA     1
+ATOM      6 D   CA   . ALA  A ?     6 .     6.7041    11.1279     4.6140  0.0  0.0  ?  ?  ?  ?  ?  .      6  ALA A   CA     1
+ATOM      7 D   CA   . ALA  A ?     7 .     6.5645    10.1654     4.3813  0.0  0.0  ?  ?  ?  ?  ?  .      7  ALA A   CA     1
+ATOM      8 D   CA   . ALA  A ?     8 .     6.4259     9.2027     4.1486  0.0  0.0  ?  ?  ?  ?  ?  .      8  ALA A   CA     1
+ATOM      9 D   CA   . ALA  A ?     9 .     6.2880     8.2398     3.9167  0.0  0.0  ?  ?  ?  ?  ?  .      9  ALA A   CA     1
+ATOM     10 D   CA   . ALA  A ?    10 .     6.1504     7.2764     3.6865  0.0  0.0  ?  ?  ?  ?  ?  .     10  ALA A   CA     1
+ATOM     11 D   CA   . ALA  A ?    11 .     6.0139     6.3124     3.4583  0.0  0.0  ?  ?  ?  ?  ?  .     11  ALA A   CA     1
+ATOM     12 D   CA   . ALA  A ?    12 .     5.8778     5.3476     3.2330  0.0  0.0  ?  ?  ?  ?  ?  .     12  ALA A   CA     1
+ATOM     13 D   CA   . ALA  A ?    13 .     5.7353     4.3827     3.0126  0.0  0.0  ?  ?  ?  ?  ?  .     13  ALA A   CA     1
+ATOM     14 D   CA   . ALA  A ?    14 .     5.5794     3.4184     2.7983  0.0  0.0  ?  ?  ?  ?  ?  .     14  ALA A   CA     1
+ATOM     15 D   CA   . ALA  A ?    15 .     5.4033     2.4560     2.5912  0.0  0.0  ?  ?  ?  ?  ?  .     15  ALA A   CA     1
+ATOM     16 D   CA   . ALA  A ?    16 .     5.1999     1.4971     2.3933  0.0  0.0  ?  ?  ?  ?  ?  .     16  ALA A   CA     1
+ATOM     17 D   CA   . ALA  A ?    17 .     4.9620     0.5442     2.2054  0.0  0.0  ?  ?  ?  ?  ?  .     17  ALA A   CA     1
+ATOM     18 D   CA   . ALA  A ?    18 .     4.6821    -0.3995     2.0294  0.0  0.0  ?  ?  ?  ?  ?  .     18  ALA A   CA     1
+ATOM     19 D   CA   . ALA  A ?    19 .     4.3541    -1.3302     1.8668  0.0  0.0  ?  ?  ?  ?  ?  .     19  ALA A   CA     1
+ATOM     20 D   CA   . ALA  A ?    20 .     3.9731    -2.2428     1.7188  0.0  0.0  ?  ?  ?  ?  ?  .     20  ALA A   CA     1
+ATOM     21 D   CA   . ALA  A ?    21 .     3.5341    -3.1317     1.5876  0.0  0.0  ?  ?  ?  ?  ?  .     21  ALA A   CA     1
+ATOM     22 D   CA   . ALA  A ?    22 .     3.0334    -3.9900     1.4753  0.0  0.0  ?  ?  ?  ?  ?  .     22  ALA A   CA     1
+ATOM     23 D   CA   . ALA  A ?    23 .     2.4687    -4.8103     1.3848  0.0  0.0  ?  ?  ?  ?  ?  .     23  ALA A   CA     1
+ATOM     24 D   CA   . ALA  A ?    24 .     1.8389    -5.5844     1.3190  0.0  0.0  ?  ?  ?  ?  ?  .     24  ALA A   CA     1
+ATOM     25 D   CA   . ALA  A ?    25 .     1.1447    -6.3030     1.2802  0.0  0.0  ?  ?  ?  ?  ?  .     25  ALA A   CA     1
+ATOM     26 D   CA   . ALA  A ?    26 .     0.3876    -6.9563     1.2704  0.0  0.0  ?  ?  ?  ?  ?  .     26  ALA A   CA     1
+ATOM     27 D   CA   . ALA  A ?    27 .    -0.4288    -7.5333     1.2903  0.0  0.0  ?  ?  ?  ?  ?  .     27  ALA A   CA     1
+ATOM     28 D   CA   . ALA  A ?    28 .    -1.2988    -8.0239     1.3401  0.0  0.0  ?  ?  ?  ?  ?  .     28  ALA A   CA     1
+ATOM     29 D   CA   . ALA  A ?    29 .    -2.2141    -8.4187     1.4196  0.0  0.0  ?  ?  ?  ?  ?  .     29  ALA A   CA     1
+ATOM     30 D   CA   . ALA  A ?    30 .    -3.1649    -8.7095     1.5272  0.0  0.0  ?  ?  ?  ?  ?  .     30  ALA A   CA     1
+ATOM     31 D   CA   . ALA  A ?    31 .    -4.1396    -8.8891     1.6602  0.0  0.0  ?  ?  ?  ?  ?  .     31  ALA A   CA     1
+ATOM     32 D   CA   . ALA  A ?    32 .    -5.1253    -8.9532     1.8155  0.0  0.0  ?  ?  ?  ?  ?  .     32  ALA A   CA     1
+ATOM     33 D   CA   . ALA  A ?    33 .    -6.1086    -8.8987     1.9895  0.0  0.0  ?  ?  ?  ?  ?  .     33  ALA A   CA     1
+ATOM     34 D   CA   . ALA  A ?    34 .    -7.0750    -8.7245     2.1783  0.0  0.0  ?  ?  ?  ?  ?  .     34  ALA A   CA     1
+ATOM     35 D   CA   . ALA  A ?    35 .    -8.0101    -8.4316     2.3777  0.0  0.0  ?  ?  ?  ?  ?  .     35  ALA A   CA     1
+ATOM     36 D   CA   . ALA  A ?    36 .    -8.9002    -8.0245     2.5827  0.0  0.0  ?  ?  ?  ?  ?  .     36  ALA A   CA     1
+ATOM     37 D   CA   . ALA  A ?    37 .    -9.7320    -7.5094     2.7894  0.0  0.0  ?  ?  ?  ?  ?  .     37  ALA A   CA     1
+ATOM     38 D   CA   . ALA  A ?    38 .   -10.4931    -6.8936     2.9932  0.0  0.0  ?  ?  ?  ?  ?  .     38  ALA A   CA     1
+ATOM     39 D   CA   . ALA  A ?    39 .   -11.1728    -6.1871     3.1903  0.0  0.0  ?  ?  ?  ?  ?  .     39  ALA A   CA     1
+ATOM     40 D   CA   . ALA  A ?    40 .   -11.7623    -5.4015     3.3783  0.0  0.0  ?  ?  ?  ?  ?  .     40  ALA A   CA     1
+ATOM     41 D   CA   . ALA  A ?    41 .   -12.2539    -4.5485     3.5532  0.0  0.0  ?  ?  ?  ?  ?  .     41  ALA A   CA     1
+ATOM     42 D   CA   . ALA  A ?    42 .   -12.6418    -3.6406     3.7122  0.0  0.0  ?  ?  ?  ?  ?  .     42  ALA A   CA     1
+ATOM     43 D   CA   . ALA  A ?    43 .   -12.9228    -2.6914     3.8535  0.0  0.0  ?  ?  ?  ?  ?  .     43  ALA A   CA     1
+ATOM     44 D   CA   . ALA  A ?    44 .   -13.0956    -1.7138     3.9739  0.0  0.0  ?  ?  ?  ?  ?  .     44  ALA A   CA     1
+ATOM     45 D   CA   . ALA  A ?    45 .   -13.1603    -0.7207     4.0710  0.0  0.0  ?  ?  ?  ?  ?  .     45  ALA A   CA     1
+ATOM     46 D   CA   . ALA  A ?    46 .   -13.1177     0.2758     4.1433  0.0  0.0  ?  ?  ?  ?  ?  .     46  ALA A   CA     1
+ATOM     47 D   CA   . ALA  A ?    47 .   -12.9692     1.2636     4.1896  0.0  0.0  ?  ?  ?  ?  ?  .     47  ALA A   CA     1
+ATOM     48 D   CA   . ALA  A ?    48 .   -12.7179     2.2313     4.2094  0.0  0.0  ?  ?  ?  ?  ?  .     48  ALA A   CA     1
+ATOM     49 D   CA   . ALA  A ?    49 .   -12.3685     3.1683     4.2030  0.0  0.0  ?  ?  ?  ?  ?  .     49  ALA A   CA     1
+ATOM     50 D   CA   . ALA  A ?    50 .   -11.9275     4.0652     4.1713  0.0  0.0  ?  ?  ?  ?  ?  .     50  ALA A   CA     1
+ATOM     51 D   CA   . ALA  A ?    51 .   -11.4012     4.9137     4.1169  0.0  0.0  ?  ?  ?  ?  ?  .     51  ALA A   CA     1
+ATOM     52 D   CA   . ALA  A ?    52 .   -10.7964     5.7066     4.0422  0.0  0.0  ?  ?  ?  ?  ?  .     52  ALA A   CA     1
+ATOM     53 D   CA   . ALA  A ?    53 .   -10.1211     6.4384     3.9503  0.0  0.0  ?  ?  ?  ?  ?  .     53  ALA A   CA     1
+ATOM     54 D   CA   . ALA  A ?    54 .    -9.3824     7.1041     3.8443  0.0  0.0  ?  ?  ?  ?  ?  .     54  ALA A   CA     1
+ATOM     55 D   CA   . ALA  A ?    55 .    -8.5875     7.6996     3.7279  0.0  0.0  ?  ?  ?  ?  ?  .     55  ALA A   CA     1
+ATOM     56 D   CA   . ALA  A ?    56 .    -7.7432     8.2210     3.6049  0.0  0.0  ?  ?  ?  ?  ?  .     56  ALA A   CA     1
+ATOM     57 D   CA   . ALA  A ?    57 .    -6.8562     8.6652     3.4782  0.0  0.0  ?  ?  ?  ?  ?  .     57  ALA A   CA     1
+ATOM     58 D   CA   . ALA  A ?    58 .    -5.9335     9.0295     3.3520  0.0  0.0  ?  ?  ?  ?  ?  .     58  ALA A   CA     1
+ATOM     59 D   CA   . ALA  A ?    59 .    -4.9821     9.3124     3.2306  0.0  0.0  ?  ?  ?  ?  ?  .     59  ALA A   CA     1
+ATOM     60 D   CA   . ALA  A ?    60 .    -4.0089     9.5127     3.1176  0.0  0.0  ?  ?  ?  ?  ?  .     60  ALA A   CA     1
+ATOM     61 D   CA   . ALA  A ?    61 .    -3.0210     9.6307     3.0170  0.0  0.0  ?  ?  ?  ?  ?  .     61  ALA A   CA     1
+ATOM     62 D   CA   . ALA  A ?    62 .    -2.0252     9.6666     2.9325  0.0  0.0  ?  ?  ?  ?  ?  .     62  ALA A   CA     1
+ATOM     63 D   CA   . ALA  A ?    63 .    -1.0284     9.6193     2.8672  0.0  0.0  ?  ?  ?  ?  ?  .     63  ALA A   CA     1
+ATOM     64 D   CA   . ALA  A ?    64 .    -0.0378     9.4890     2.8251  0.0  0.0  ?  ?  ?  ?  ?  .     64  ALA A   CA     1
+ATOM     65 D   CA   . ALA  A ?    65 .     0.9390     9.2756     2.8099  0.0  0.0  ?  ?  ?  ?  ?  .     65  ALA A   CA     1
+ATOM     66 D   CA   . ALA  A ?    66 .     1.8939     8.9790     2.8247  0.0  0.0  ?  ?  ?  ?  ?  .     66  ALA A   CA     1
+ATOM     67 D   CA   . ALA  A ?    67 .     2.8183     8.6007     2.8730  0.0  0.0  ?  ?  ?  ?  ?  .     67  ALA A   CA     1
+ATOM     68 D   CA   . ALA  A ?    68 .     3.7026     8.1416     2.9583  0.0  0.0  ?  ?  ?  ?  ?  .     68  ALA A   CA     1
+ATOM     69 D   CA   . ALA  A ?    69 .     4.5365     7.6040     3.0832  0.0  0.0  ?  ?  ?  ?  ?  .     69  ALA A   CA     1
+ATOM     70 D   CA   . ALA  A ?    70 .     5.3099     6.9922     3.2494  0.0  0.0  ?  ?  ?  ?  ?  .     70  ALA A   CA     1
+ATOM     71 D   CA   . ALA  A ?    71 .     6.0129     6.3125     3.4587  0.0  0.0  ?  ?  ?  ?  ?  .     71  ALA A   CA     1
+ATOM     72 D   CA   . ALA  A ?    72 .     6.6355     5.5720     3.7114  0.0  0.0  ?  ?  ?  ?  ?  .     72  ALA A   CA     1
+ATOM     73 D   CA   . ALA  A ?    73 .     7.1719     4.7807     4.0049  0.0  0.0  ?  ?  ?  ?  ?  .     73  ALA A   CA     1
+ATOM     74 D   CA   . ALA  A ?    74 .     7.6170     3.9487     4.3360  0.0  0.0  ?  ?  ?  ?  ?  .     74  ALA A   CA     1
+ATOM     75 D   CA   . ALA  A ?    75 .     7.9683     3.0864     4.7005  0.0  0.0  ?  ?  ?  ?  ?  .     75  ALA A   CA     1
+ATOM     76 D   CA   . ALA  A ?    76 .     8.2253     2.2037     5.0939  0.0  0.0  ?  ?  ?  ?  ?  .     76  ALA A   CA     1
+ATOM     77 D   CA   . ALA  A ?    77 .     8.3880     1.3100     5.5120  0.0  0.0  ?  ?  ?  ?  ?  .     77  ALA A   CA     1
+ATOM     78 D   CA   . ALA  A ?    78 .     8.4597     0.4141     5.9503  0.0  0.0  ?  ?  ?  ?  ?  .     78  ALA A   CA     1
+ATOM     79 D   CA   . ALA  A ?    79 .     8.4444    -0.4765     6.4049  0.0  0.0  ?  ?  ?  ?  ?  .     79  ALA A   CA     1
+ATOM     80 D   CA   . ALA  A ?    80 .     8.3469    -1.3555     6.8715  0.0  0.0  ?  ?  ?  ?  ?  .     80  ALA A   CA     1
+ATOM     81 D   CA   . ALA  A ?    81 .     8.1744    -2.2185     7.3464  0.0  0.0  ?  ?  ?  ?  ?  .     81  ALA A   CA     1
+ATOM     82 D   CA   . ALA  A ?    82 .     7.9336    -3.0614     7.8275  0.0  0.0  ?  ?  ?  ?  ?  .     82  ALA A   CA     1
+ATOM     83 D   CA   . ALA  A ?    83 .     7.6310    -3.8822     8.3121  0.0  0.0  ?  ?  ?  ?  ?  .     83  ALA A   CA     1
+ATOM     84 D   CA   . ALA  A ?    84 .     7.2731    -4.6801     8.7971  0.0  0.0  ?  ?  ?  ?  ?  .     84  ALA A   CA     1
+ATOM     85 D   CA   . ALA  A ?    85 .     6.8661    -5.4546     9.2813  0.0  0.0  ?  ?  ?  ?  ?  .     85  ALA A   CA     1
+ATOM     86 D   CA   . ALA  A ?    86 .     6.4162    -6.2064     9.7634  0.0  0.0  ?  ?  ?  ?  ?  .     86  ALA A   CA     1
+ATOM     87 D   CA   . ALA  A ?    87 .     5.9295    -6.9371    10.2421  0.0  0.0  ?  ?  ?  ?  ?  .     87  ALA A   CA     1
+ATOM     88 D   CA   . ALA  A ?    88 .     5.4119    -7.6482    10.7179  0.0  0.0  ?  ?  ?  ?  ?  .     88  ALA A   CA     1
+ATOM     89 D   CA   . ALA  A ?    89 .     4.8685    -8.3416    11.1912  0.0  0.0  ?  ?  ?  ?  ?  .     89  ALA A   CA     1
+ATOM     90 D   CA   . ALA  A ?    90 .     4.3036    -9.0191    11.6622  0.0  0.0  ?  ?  ?  ?  ?  .     90  ALA A   CA     1
+ATOM     91 D   CA   . ALA  A ?    91 .     3.7213    -9.6832    12.1311  0.0  0.0  ?  ?  ?  ?  ?  .     91  ALA A   CA     1
+ATOM     92 D   CA   . ALA  A ?    92 .     3.1251   -10.3358    12.5986  0.0  0.0  ?  ?  ?  ?  ?  .     92  ALA A   CA     1
+ATOM     93 D   CA   . ALA  A ?    93 .     2.5179   -10.9786    13.0657  0.0  0.0  ?  ?  ?  ?  ?  .     93  ALA A   CA     1
+ATOM     94 D   CA   . ALA  A ?    94 .     1.9024   -11.6131    13.5330  0.0  0.0  ?  ?  ?  ?  ?  .     94  ALA A   CA     1
+ATOM     95 D   CA   . ALA  A ?    95 .     1.2806   -12.2411    14.0010  0.0  0.0  ?  ?  ?  ?  ?  .     95  ALA A   CA     1
+ATOM     96 D   CA   . ALA  A ?    96 .     0.6537   -12.8637    14.4694  0.0  0.0  ?  ?  ?  ?  ?  .     96  ALA A   CA     1
+ATOM     97 D   CA   . ALA  A ?    97 .     0.0235   -13.4824    14.9384  0.0  0.0  ?  ?  ?  ?  ?  .     97  ALA A   CA     1
+ATOM     98 D   CA   . ALA  A ?    98 .    -0.6094   -14.0983    15.4076  0.0  0.0  ?  ?  ?  ?  ?  .     98  ALA A   CA     1
+ATOM     99 D   CA   . ALA  A ?    99 .    -1.2439   -14.7126    15.8766  0.0  0.0  ?  ?  ?  ?  ?  .     99  ALA A   CA     1
+ATOM    100 D   CA   . ALA  A ?   100 .    -1.8790   -15.3269    16.3450  0.0  0.0  ?  ?  ?  ?  ?  .    100  ALA A   CA     1
