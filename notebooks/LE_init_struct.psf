@@ -3,7 +3,7 @@ PSF CMAP
       1 !NTITLE
 REMARKS No title provided
 
-     501 !NATOM
+     500 !NATOM
        1 BEAD 1     ALA  CA   A      0.000000        1.00 0           0
        2 BEAD 2     ALA  CA   A      0.000000        1.00 0           0
        3 BEAD 3     ALA  CA   A      0.000000        1.00 0           0
@@ -504,9 +504,8 @@ REMARKS No title provided
      498 BEAD 498   ALA  CA   A      0.000000        1.00 0           0
      499 BEAD 499   ALA  CA   A      0.000000        1.00 0           0
      500 BEAD 500   ALA  CA   A      0.000000        1.00 0           0
-     501 BEAD 501   ALA  CA   A      0.000000        1.00 0           0
 
-     500 !NBOND: bonds
+     499 !NBOND: bonds
        1       2
        2       3
        3       4
@@ -1006,4 +1005,3 @@ REMARKS No title provided
      497     498
      498     499
      499     500
-     500     501
