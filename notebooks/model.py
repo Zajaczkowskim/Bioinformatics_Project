@@ -28,10 +28,9 @@ class Model():
 
         middle_points = df_chr1[['middle1', 'middle2']].reset_index(drop=True)
         return scale_bead_chain(middle_points, self.n_connections, new_min=1, new_max=self.n_beads)
-    
     def run_simulation(self):
         # 0. Generate some initial structure
-        points = helisa(self.n_beads)
+        points = hilbert_curve3d(self.n_beads)
         write_mmcif(points,'init_struct.cif')
         generate_psf(self.n_beads,'LE_init_struct.psf')
 
@@ -42,7 +41,7 @@ class Model():
         integrator = mm.LangevinIntegrator(310, 0.05, 100 * mm.unit.femtosecond)
 
         # 2. Define the forcefield
-        # 2.1. Harmonic bond borce between succesive beads
+        # 2.1.a. Harmonic bond force between succesive beads
         bond_force = mm.HarmonicBondForce()
         system.addForce(bond_force)
         for i in range(system.getNumParticles() - 1):
@@ -56,6 +55,27 @@ class Model():
             middle1, middle2 = df_scaled.iloc[i,:]
             bond_force.addBond(middle1-1, middle2-1, 0.1, 10000)
 
+        # 2.1.b. Lennard-Jones force between succesive beads
+
+        lennard_jones_force = mm.NonbondedForce()
+
+        system.addForce(lennard_jones_force)
+
+        lennard_jones_force.setUseSwitchingFunction(True)
+        lennard_jones_force.setSwitchingDistance(0.8) # distance when function make the energy go smoothly to 0 at the cutoff distance
+        lennard_jones_force.setCutoffDistance(1.0) # cutoff the force distance
+
+        for i in range(system.getNumParticles()):
+            lennard_jones_force.addParticle(0.0, 0.0, 0.0) # (double charge, double sigma, double epsilon)
+        
+        middle1 = df_scaled['middle1']
+        middle2 = df_scaled['middle2']
+
+        for i in range(len(middle1)-1):
+            lennard_jones_force.setParticleParameters(middle1[i]-1, 1.0, 1.5, 0.7) # (index, double charge, double sigma, double epsilon)
+
+        for i in range(len(middle2)-1):
+            lennard_jones_force.setParticleParameters(middle2[i]-1, 1.0, 1.5, 0.7) # (index, double charge, double sigma, double epsilon)     
 
         #2.2. Harmonic angle force between successive beads so as to make chromatin rigid
         angle_force = mm.HarmonicAngleForce()
