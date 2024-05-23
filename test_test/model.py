@@ -8,18 +8,29 @@ from sys import stdout
 
 
 class Model():
-    def __init__(self, n_beads, n_connections, data_file_path = "data/ENCFF780PGS.bedpe", chrom = "chr1", sep = "\t") -> None:
+    def __init__(self, n_beads, n_connections, data_file_path = "..\data\ENCFF780PGS.bedpe", chrom = "chr1", sep = "\t") -> None:
         self.n_beads =  n_beads
         self.n_connections = n_connections
         self.data_file_path = data_file_path
         self.chrom = chrom
         self.sep = sep
         self.expected_loops = None
+        
+        self.forcefield = None
+        self.system = None
+        self.integrator = None
+        self.pdb = None
+
+        self.ENV_POWER = 6
+        self.ENV_SIGMA = 0.1
+        self.ENV_R_SMALL = 0.02
+        self.ENV_EPSILON = 100
+        
 
 
     @property
     def _get_prepared_data(self):
-        df = pd.read_csv("data/ENCFF780PGS.bedpe", sep=self.sep, header= None)
+        df = pd.read_csv("data\ENCFF780PGS.bedpe", sep=self.sep, header= None)
         df.columns = ["chrom1", "start1", "end1", "chrom2","start2", "end2", "score"]
 
         df_chr1 = df[df['chrom1'] == self.chrom]
@@ -28,26 +39,26 @@ class Model():
 
         middle_points = df_chr1[['middle1', 'middle2']].reset_index(drop=True)
         return scale_bead_chain(middle_points, self.n_connections, new_min=1, new_max=self.n_beads)
-    def run_simulation(self):
-        # 0. Generate some initial structure
-        points = hilbert_curve3d(self.n_beads)
+    
+    
+    def _define_init_struct(self, struct = hilbert_curve3d):
+        points = struct(self.n_beads)
         write_mmcif(points,'init_struct.cif')
         generate_psf(self.n_beads,'LE_init_struct.psf')
 
-        # 1. Define System
-        pdb = PDBxFile('init_struct.cif')
-        forcefield = ForceField('forcefields/classic_sm_ff.xml')
-        system = forcefield.createSystem(pdb.topology, nonbondedCutoff=1*u.nanometer)
-        integrator = mm.LangevinIntegrator(310, 0.05, 100 * mm.unit.femtosecond)
+    def _define_system(self):
+        self.pdb = PDBxFile('init_struct.cif')
+        self.forcefield = ForceField('notebooks\\forcefields\\classic_sm_ff.xml')
+        self.system = self.forcefield.createSystem(self.pdb.topology, nonbondedCutoff=1*u.nanometer)
+        self.integrator = mm.LangevinIntegrator(310, 0.05, 100 * mm.unit.femtosecond)
 
-        # 2. Define the forcefield
-        # 2.1.a. Harmonic bond force between succesive beads
+    def _add_bond_force(self):
         bond_force = mm.HarmonicBondForce()
-        system.addForce(bond_force)
-        for i in range(system.getNumParticles() - 1):
+        self.system.addForce(bond_force)
+        for i in range(self.n_beads - 1): # make a line 
             bond_force.addBond(i, i + 1, 0.1, 3000.0)
 
-        # Connecting selected beads
+        # connecting selected beads
         df_scaled = self._get_prepared_data
         self.expected_loops = df_scaled
 
@@ -55,48 +66,49 @@ class Model():
             middle1, middle2 = df_scaled.iloc[i,:]
             bond_force.addBond(middle1-1, middle2-1, 0.1, 10000)
 
-        # 2.1.b. Lennard-Jones force between succesive beads
+    def _add_lennard_jonnes_force(self):
+        env_force = mm.CustomNonbondedForce(f'epsilon*(sigma/(r+r_small))^{self.ENV_POWER}')
+        env_force.setForceGroup(1)
+        env_force.addGlobalParameter('epsilon', defaultValue=self.ENV_EPSILON)
+        env_force.addGlobalParameter('r_small', defaultValue=self.ENV_R_SMALL)
+        env_force.addGlobalParameter('sigma', defaultValue=self.ENV_SIGMA)
 
-        lennard_jones_force = mm.NonbondedForce()
-
-        system.addForce(lennard_jones_force)
-
-        lennard_jones_force.setUseSwitchingFunction(True)
-        lennard_jones_force.setSwitchingDistance(0.8) # distance when function make the energy go smoothly to 0 at the cutoff distance
-        lennard_jones_force.setCutoffDistance(1.0) # cutoff the force distance
-
-        for i in range(system.getNumParticles()):
-            lennard_jones_force.addParticle(0.0, 0.0, 0.0) # (double charge, double sigma, double epsilon)
-        
-        middle1 = df_scaled['middle1']
-        middle2 = df_scaled['middle2']
-
-        for i in range(len(middle1)-1):
-            lennard_jones_force.setParticleParameters(middle1[i]-1, 1.0, 1.5, 0.7) # (index, double charge, double sigma, double epsilon)
-
-        for i in range(len(middle2)-1):
-            lennard_jones_force.setParticleParameters(middle2[i]-1, 1.0, 1.5, 0.7) # (index, double charge, double sigma, double epsilon)     
-
-        #2.2. Harmonic angle force between successive beads so as to make chromatin rigid
+        for i in range(self.n_beads):
+            env_force.addParticle()
+        self.system.addForce(env_force)
+    
+    def _add_angle_forces(self):
         angle_force = mm.HarmonicAngleForce()
-        system.addForce(angle_force)
-        for i in range(system.getNumParticles() - 2):
+        self.system.addForce(angle_force)
+        for i in range(self.n_beads - 2):
             angle_force.addAngle(i, i + 1, i + 2, np.pi, 0.0001)
+
+    def run_simulation(self):
+        self._define_init_struct()
+
+        self._define_system()
+
+        # Define the forcefield
+        self._add_bond_force()
+
+        self._add_lennard_jonnes_force()
+
+        self._add_angle_forces()
             
         # 3. Minimize energy
-        simulation = Simulation(pdb.topology, system, integrator)
+        simulation = Simulation(self.pdb.topology, self.system, self.integrator)
         simulation.reporters.append(StateDataReporter(stdout, 10, step=True, totalEnergy=True, potentialEnergy=True, temperature=True))
         simulation.reporters.append(DCDReporter('stochastic_LE.dcd', 10))
-        simulation.context.setPositions(pdb.positions)
+        simulation.context.setPositions(self.pdb.positions)
         simulation.minimizeEnergy(tolerance=0.001)
         state = simulation.context.getState(getPositions=True)
-        PDBxFile.writeFile(pdb.topology, state.getPositions(), open('minimized.cif', 'w')) # save minimized file
+        PDBxFile.writeFile(self.pdb.topology, state.getPositions(), open('minimized.cif', 'w')) # save minimized file
 
         # 4. Run md simulation
         simulation.context.setVelocitiesToTemperature(310, 0)
         simulation.step(10000)
         state = simulation.context.getState(getPositions=True)
-        PDBxFile.writeFile(pdb.topology, state.getPositions(), open('after_sim.cif', 'w')) # save minimized file
-
+        PDBxFile.writeFile(self.pdb.topology, state.getPositions(), open('after_sim.cif', 'w')) # save minimized file
+        
     def visualize_data(self):
         pass
