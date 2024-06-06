@@ -8,14 +8,15 @@ from sys import stdout
 
 
 class Model():
-    def __init__(self, n_beads, n_connections, data_file_path = "..\data\ENCFF780PGS.bedpe", chrom = "chr1", sep = "\t") -> None:
+    def __init__(self, n_beads, n_connections, data_file_path = "data/ENCFF780PGS.bedpe", chrom = "chr1", sep = "\t", struct = hilbert_curve3d) -> None:
         self.n_beads =  n_beads
         self.n_connections = n_connections
         self.data_file_path = data_file_path
         self.chrom = chrom
         self.sep = sep
         self.expected_loops = None
-        
+        self.struct = struct
+
         self.forcefield = None
         self.system = None
         self.integrator = None
@@ -30,7 +31,7 @@ class Model():
 
     @property
     def _get_prepared_data(self):
-        df = pd.read_csv("data\ENCFF780PGS.bedpe", sep=self.sep, header= None)
+        df = pd.read_csv("data/ENCFF780PGS.bedpe", sep=self.sep, header= None)
         df.columns = ["chrom1", "start1", "end1", "chrom2","start2", "end2", "score"]
 
         df_chr1 = df[df['chrom1'] == self.chrom]
@@ -43,12 +44,12 @@ class Model():
     
     def _define_init_struct(self, struct = hilbert_curve3d):
         points = struct(self.n_beads)
-        write_mmcif(points,'init_struct.cif')
-        generate_psf(self.n_beads,'LE_init_struct.psf')
+        write_mmcif(points,f'initial_structures_tests/{struct.__name__}/init_struct.cif')
+        generate_psf(self.n_beads,f'initial_structures_tests/{struct.__name__}/LE_init_struct.psf')
 
     def _define_system(self):
-        self.pdb = PDBxFile('init_struct.cif')
-        self.forcefield = ForceField('notebooks\\forcefields\\classic_sm_ff.xml')
+        self.pdb = PDBxFile(f'initial_structures_tests/{self.struct.__name__}/init_struct.cif')
+        self.forcefield = ForceField('forcefields/classic_sm_ff.xml')
         self.system = self.forcefield.createSystem(self.pdb.topology, nonbondedCutoff=1*u.nanometer)
         self.integrator = mm.LangevinIntegrator(310, 0.05, 100 * mm.unit.femtosecond)
 
@@ -84,7 +85,7 @@ class Model():
             angle_force.addAngle(i, i + 1, i + 2, np.pi, 0.0001)
 
     def run_simulation(self):
-        self._define_init_struct()
+        self._define_init_struct(struct= self.struct)
 
         self._define_system()
 
@@ -98,17 +99,17 @@ class Model():
         # 3. Minimize energy
         simulation = Simulation(self.pdb.topology, self.system, self.integrator)
         simulation.reporters.append(StateDataReporter(stdout, 10, step=True, totalEnergy=True, potentialEnergy=True, temperature=True))
-        simulation.reporters.append(DCDReporter('stochastic_LE.dcd', 10))
+        simulation.reporters.append(DCDReporter(f'initial_structures_tests/{self.struct.__name__}/stochastic_LE.dcd', 10))
         simulation.context.setPositions(self.pdb.positions)
         simulation.minimizeEnergy(tolerance=0.001)
         state = simulation.context.getState(getPositions=True)
-        PDBxFile.writeFile(self.pdb.topology, state.getPositions(), open('minimized.cif', 'w')) # save minimized file
+        PDBxFile.writeFile(self.pdb.topology, state.getPositions(), open(f'initial_structures_tests/{self.struct.__name__}/minimized.cif', 'w')) # save minimized file
 
         # 4. Run md simulation
         simulation.context.setVelocitiesToTemperature(310, 0)
         simulation.step(10000)
         state = simulation.context.getState(getPositions=True)
-        PDBxFile.writeFile(self.pdb.topology, state.getPositions(), open('after_sim.cif', 'w')) # save minimized file
+        PDBxFile.writeFile(self.pdb.topology, state.getPositions(),  open(f'initial_structures_tests/{self.struct.__name__}/after_sim.cif', 'w')) # save minimized file
         
     def visualize_data(self):
         pass
