@@ -16,6 +16,7 @@ class Model():
         self.sep = sep
         self.expected_loops = None
         self.struct = struct
+        self.score = None
 
         self.forcefield = None
         self.system = None
@@ -34,11 +35,12 @@ class Model():
         df = pd.read_csv("data/ENCFF780PGS.bedpe", sep=self.sep, header= None)
         df.columns = ["chrom1", "start1", "end1", "chrom2","start2", "end2", "score"]
 
-        df_chr1 = df[df['chrom1'] == self.chrom]
+        df_chr1 = df.loc[df['chrom1'] == self.chrom, :]
         df_chr1['middle1'] = (df_chr1['end1'] + df_chr1['start1'])/2
         df_chr1['middle2'] = (df_chr1['end2'] + df_chr1['start2'])/2
 
         middle_points = df_chr1[['middle1', 'middle2']].reset_index(drop=True)
+        self.score = df_chr1['score'].reset_index(drop=True)
         return scale_bead_chain(middle_points, self.n_connections, new_min=1, new_max=self.n_beads)
     
     
@@ -65,7 +67,7 @@ class Model():
 
         for i in range(len(df_scaled)):
             middle1, middle2 = df_scaled.iloc[i,:]
-            bond_force.addBond(middle1-1, middle2-1, 0.1, 10000)
+            bond_force.addBond(middle1-1, middle2-1, 0.1, self.score[i] * 5000)
 
     def _add_lennard_jonnes_force(self):
         env_force = mm.CustomNonbondedForce(f'epsilon*(sigma/(r+r_small))^{self.ENV_POWER}')
